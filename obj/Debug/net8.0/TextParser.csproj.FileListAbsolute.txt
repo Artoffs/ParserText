@@ -1,0 +1,14 @@
+C:\Users\SystemX\source\repos\TextParser\bin\Debug\net8.0\TextParser.exe
+C:\Users\SystemX\source\repos\TextParser\bin\Debug\net8.0\TextParser.deps.json
+C:\Users\SystemX\source\repos\TextParser\bin\Debug\net8.0\TextParser.runtimeconfig.json
+C:\Users\SystemX\source\repos\TextParser\bin\Debug\net8.0\TextParser.dll
+C:\Users\SystemX\source\repos\TextParser\bin\Debug\net8.0\TextParser.pdb
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.AssemblyInfoInputs.cache
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.AssemblyInfo.cs
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.csproj.CoreCompileInputs.cache
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.dll
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\refint\TextParser.dll
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.pdb
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.genruntimeconfig.cache
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\ref\TextParser.dll
