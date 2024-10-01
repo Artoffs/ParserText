@@ -8,7 +8,8 @@ namespace TextParser
         {
             Parser parser = new Parser("text.txt");
             TextToken text = parser.Parse();
-            Console.WriteLine(parser.ToString());
+            TextToken SortedText = text.SortTextByAscendingOrder();
+            Console.WriteLine(SortedText.ToString());
         }
     }
 }

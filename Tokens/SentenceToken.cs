@@ -12,22 +12,25 @@
         public override string ToString()
         {
             string result = string.Empty;
-            foreach (Token t in words)
+            foreach (var token in words)
             {
-                WordToken WordTok;
-                PunctuationToken PuncTok;
-                if (t is PunctuationToken)
+                if (token is WordToken)
                 {
-                    PuncTok = (PunctuationToken)t;
+                    result += " " + token.ToString();
                 }
-                if (t is WordToken) 
+                if (token is PunctuationToken)
                 {
-                    WordTok = (WordToken)t;
-                    result += $"{t.GetType()} ({WordTok.GetValue()})";
+                    result += token.ToString();
                 }
-
             }
-            return String.Empty;
+            return result;
         }
+
+        public int getNumberOfWords()
+        {
+            return words.Count;
+        }
+        
+        
     }
 }
