@@ -25,8 +25,9 @@
                     WordTok = (WordToken)t;
                     result += $"{t.GetType()} ({WordTok.GetValue()})";
                 }
-                
+
             }
+            return String.Empty;
         }
     }
 }

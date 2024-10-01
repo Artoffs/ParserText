@@ -12,3 +12,4 @@ C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\refint\TextParser.dll
 C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.pdb
 C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.genruntimeconfig.cache
 C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\ref\TextParser.dll
+C:\Users\SystemX\source\repos\TextParser\obj\Debug\net8.0\TextParser.sourcelink.json

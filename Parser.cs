@@ -4,7 +4,7 @@ namespace TextParser
 {
     public class Parser
     {
-        private const string RUSSIAN_ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        private const string RUSSIAN_ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя-";
         private const string ENGLISH_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         private const string FULL_ALPHABET = RUSSIAN_ALPHABET + ENGLISH_ALPHABET;
         private const string PUNCTUATION = "!?.";
@@ -26,6 +26,7 @@ namespace TextParser
             while (currentIndex != -1)
             {
                 text.Add(MakeSentence());
+                Advance();
             }
             return new TextToken(text); 
         }
@@ -38,7 +39,6 @@ namespace TextParser
                 if (FULL_ALPHABET.Contains(currentChar))
                 {
                     sentence.Add(MakeWord());
-                    Advance();
                 }
                 if (currentChar == ',')
                 {
@@ -48,9 +48,12 @@ namespace TextParser
                 if (PUNCTUATION.Contains(currentChar))
                 {
                     sentence.Add(new PunctuationToken(currentChar.ToString()));
-                    Advance();
                 }
                 if (currentChar == ' ')
+                {
+                    Advance();
+                }
+                if (currentChar == '\n' || currentChar == '\r')
                 {
                     Advance();
                 }
@@ -72,14 +75,15 @@ namespace TextParser
 
         private void Advance()
         {
-            if (currentIndex + 1 < text.Length)
+            if (currentIndex + 1 == text.Length)
             {
-                currentIndex++;
-                currentChar = text[currentIndex];
+                currentIndex = -1;
+                currentChar = '\0';
             }
             else
             {
-                currentIndex = -1;
+                currentIndex++;
+                currentChar = text[currentIndex];
             }
         }
         private string ExtractText(string filename)
