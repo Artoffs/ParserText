@@ -14,14 +14,13 @@
             return String.Join("", value);
         }
 
-        public List<SentenceToken> getCopyOfText()
-        {
-            return new List<SentenceToken>(value);
-        }
-
         public TextToken SortTextByAscendingOrder()
         {
             return new TextToken(value.OrderBy(x => x.getNumberOfWords()).ToList());
+        }
+        public TextToken SortTextByLength()
+        {
+            return new TextToken(value.OrderBy(x => x.getLenghtOfSentence()).ToList());
         }
     }
 }
