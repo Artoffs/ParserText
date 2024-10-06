@@ -13,6 +13,8 @@
         {
             return TokenType;
         }
+
+        public abstract int GetLength();
     }
 }
 

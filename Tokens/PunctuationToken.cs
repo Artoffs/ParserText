@@ -14,5 +14,10 @@
             return value;
         }
 
+        public override int GetLength()
+        {
+            return value.Length;
+        }
+
     }
 }

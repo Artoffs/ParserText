@@ -18,6 +18,16 @@
             this.type = CheckSentenceType();
         }
 
+        public List<Token> GetWords()
+        { 
+            return words;
+        }
+
+        public override int GetLength()
+        {  
+            return words.Count;
+        }
+
         private SentenceType CheckSentenceType()
         {
             foreach (var token in this.words)
@@ -27,14 +37,17 @@
                     switch (((PunctuationToken)token).ToString())
                     {
                         case "!":
-                            return SentenceType.Interrogative;
-                        case "?":
                             return SentenceType.Exclamatory;
+                        case "?":
+                            return SentenceType.Interrogative;
                     }
                 }
             }
             return SentenceType.Declarative;
         }
+
+        public SentenceType GetSentenceType() 
+        { return this.type; }
         
 
         public override string ToString()
@@ -83,6 +96,17 @@
             }
             return lenghtOfSentence;
         }
+
+        public List<string> ConvertSentenceToWordsArray()
+        {
+            List<string> result = new List<string>();
+            foreach (var word in words)
+            {
+                result.Add(word.ToString());
+            }
+            return result;
+        }
+
         
     }
 }

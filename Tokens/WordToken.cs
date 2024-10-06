@@ -2,15 +2,27 @@
 {
     public class WordToken : Token
     {
-        private string value { get; }
+
+        private string value;
+
         public WordToken(string value) : base("Word")
         {
             this.value = value;
         }
 
+        public override int GetLength()
+        { 
+            return value.Length;
+        }
+
         public string GetValue()
         {
-            return this.value;
+            return value;
+        }
+
+        public void SetValue(string newValue)
+        {
+            value = newValue;
         }
 
         public override string ToString()
