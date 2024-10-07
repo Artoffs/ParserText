@@ -1,4 +1,6 @@
-﻿namespace TextParser.Tokens
+﻿using System.Xml.Serialization;
+
+namespace TextParser.Tokens
 {
     public enum SentenceType
     {
@@ -9,8 +11,13 @@
 
     public class SentenceToken : Token
     {
+        [XmlElement("token")]
         private List<Token> words { get; }
         private SentenceType type;
+
+        public SentenceToken() : base("Sentence")
+        { }
+
 
         public SentenceToken(List<Token> words) : base("Sentence")
         {

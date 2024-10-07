@@ -1,8 +1,15 @@
-﻿namespace TextParser.Tokens
+﻿using System.Xml;
+using System.Xml.Serialization;
+
+namespace TextParser.Tokens
 {
+    [XmlRoot("text")]
     public class TextToken : Token
     {
+        [XmlElement("sentence")]
         private List<SentenceToken> value { get; }
+
+        public TextToken() : base("Text") { }
 
         public TextToken(List<SentenceToken> value) : base("Text") 
         {
@@ -44,6 +51,20 @@
                 }
             }
             return result;
+        }
+
+        private static string ReadStopWords()
+        {
+            string stopwords = String.Empty;
+            using (StreamReader reader = new StreamReader("stopwords_ru.txt"))
+            {
+                stopwords += reader.ReadToEnd();
+            }
+            using (StreamReader reader = new StreamReader("stopwords_en.txt"))
+            {
+                stopwords += reader.ReadToEnd();
+            }
+            return stopwords;
         }
 
         // Task 3
@@ -91,6 +112,59 @@
                 {
                     ((WordToken)word).SetValue(rep);
                 }
+            }
+        }
+
+        // task 6
+        public TextToken DeleteStopWords()
+        {
+            string stopwords = ReadStopWords();
+            List<string> newText = new List<string>();
+            foreach (string word in GetAllWords())
+            {
+                if (!stopwords.Contains(word))
+                {
+                    newText.Add(word);
+                }
+            }
+            Parser parser = new Parser(null, string.Join(" ", newText.ToArray()));
+            return parser.Parse();
+        }
+
+        // task 7
+        public void Serialize()
+        {
+            using (XmlWriter writer = XmlWriter.Create("tokens.xml", new XmlWriterSettings { Indent = true }))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("text");
+
+                foreach (SentenceToken sentence in value)
+                {
+                    writer.WriteStartElement("sentence");
+
+                    foreach (Token token in sentence.GetWords())
+                    {
+                        writer.WriteStartElement("token");
+                        writer.WriteAttributeString("type", token.GetTokenType());
+
+                        if (token is WordToken wordToken)
+                        {
+                            writer.WriteString(wordToken.ToString());
+                        }
+                        else if (token is PunctuationToken punctuationToken)
+                        {
+                            writer.WriteString(punctuationToken.ToString());
+                        }
+
+                        writer.WriteEndElement(); // token
+                    }
+
+                    writer.WriteEndElement(); // sentence
+                }
+
+                writer.WriteEndElement(); // text
+                writer.WriteEndDocument();
             }
         }
 

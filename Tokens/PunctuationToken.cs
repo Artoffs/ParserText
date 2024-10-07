@@ -1,8 +1,13 @@
-﻿namespace TextParser.Tokens
+﻿using System.Xml.Serialization;
+
+namespace TextParser.Tokens
 {
     public class PunctuationToken : Token
     {
+        [XmlText]
         private string value { get; }
+
+        public PunctuationToken() : base("punctuation") { }
 
         public PunctuationToken(string value) : base("Punctuation")
         {

@@ -1,9 +1,14 @@
-﻿namespace TextParser.Tokens
+﻿using System.Xml.Serialization;
+
+namespace TextParser.Tokens
 {
     public class WordToken : Token
     {
-
+        [XmlText]
         private string value;
+
+        public WordToken() : base("Word")
+        { }
 
         public WordToken(string value) : base("Word")
         {
